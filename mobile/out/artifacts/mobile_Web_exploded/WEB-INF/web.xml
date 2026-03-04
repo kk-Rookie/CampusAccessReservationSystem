@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+         https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+
+    <display-name>校园通行码预约系统</display-name>
+
+    <!-- 设置默认首页 -->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+    <!-- 会话超时设置 -->
+    <session-config>
+        <session-timeout>1</session-timeout>
+    </session-config>
+
+    <!-- 缓存控制过滤器 -->
+    <filter>
+        <filter-name>CacheControlFilter</filter-name>
+        <filter-class>com.example.demo.filter.CacheControlFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>CacheControlFilter</filter-name>
+        <url-pattern>/api/*</url-pattern>
+    </filter-mapping>
+    
+    <!-- 错误页面配置 -->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/pages/error/404.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/pages/error/500.jsp</location>
+    </error-page>
+    <error-page>
+        <exception-type>java.lang.Throwable</exception-type>
+        <location>/pages/error/error.jsp</location>
+    </error-page>
+    
+    <!-- JSP 配置 -->
+    <jsp-config>
+        <jsp-property-group>
+            <url-pattern>*.jsp</url-pattern>
+            <trim-directive-whitespaces>true</trim-directive-whitespaces>
+            <page-encoding>UTF-8</page-encoding>
+            <buffer>16kb</buffer>
+            <default-content-type>text/html; charset=UTF-8</default-content-type>
+        </jsp-property-group>
+    </jsp-config>
+
+</web-app>

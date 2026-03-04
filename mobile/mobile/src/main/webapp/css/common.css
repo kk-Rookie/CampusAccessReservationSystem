@@ -1,0 +1,858 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 425px;
+    width: 100%;
+    margin: 0 auto;
+    background: #fff;
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 65px;
+    overflow-x: hidden;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+/* 确保所有页面在移动端都是425px宽度 */
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+/* 头部样式 - 移动端优化 */
+.header {
+    background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+    color: white;
+    padding: 12px 15px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 2px 12px rgba(59, 130, 246, 0.15);
+}
+
+.header h1 {
+    font-size: 16px;
+    margin-bottom: 2px;
+    font-weight: 600;
+}
+
+/* 响应式头部 - 减少间距 */
+@media (min-width: 375px) {
+    .header {
+        padding: 14px 15px;
+    }
+    .header h1 {
+        font-size: 18px;
+        margin-bottom: 3px;
+    }
+}
+
+.back-btn {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.back-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* 响应式返回按钮 */
+@media (min-width: 375px) {
+    .back-btn {
+        left: 15px;
+        font-size: 18px;
+    }
+}
+
+/* 底部导航 - 减少高度 */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 425px;
+    background: #fff;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    height: 55px;
+    z-index: 1000;
+    box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.1);
+}
+
+.nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    padding: 6px 2px;
+    border-radius: 10px;
+    margin: 6px 2px;
+}
+
+.nav-item.active {
+    color: #3b82f6;
+    background: rgba(59, 130, 246, 0.1);
+}
+
+.nav-item i {
+    font-size: 20px;
+    margin-bottom: 3px;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease;
+}
+
+.nav-item span {
+    font-size: 10px;
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+    letter-spacing: 0.3px;
+}
+
+/* 响应式导航项 */
+@media (min-width: 375px) {
+    .nav-item {
+        padding: 8px 4px;
+        margin: 8px 4px;
+    }
+    
+    .nav-item i {
+        font-size: 22px;
+        margin-bottom: 4px;
+    }
+    
+    .nav-item span {
+        font-size: 11px;
+        letter-spacing: 0.5px;
+    }
+}
+
+@media (min-width: 768px) {
+    .nav-item i {
+        font-size: 24px;
+    }
+}
+
+/* 表单样式 - 移动端优化 */
+.form-section {
+    padding: 12px;
+}
+
+.form-group {
+    margin-bottom: 12px;
+}
+
+@media (min-width: 375px) {
+    .form-section {
+        padding: 16px;
+    }
+    
+    .form-group {
+        margin-bottom: 15px;
+    }
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    font-weight: 500;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #4e91fb;
+}
+
+.form-select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    background: white;
+}
+
+/* 按钮样式 - 移动端优化 */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+}
+
+@media (min-width: 375px) {
+    .btn {
+        padding: 12px 24px;
+        font-size: 16px;
+    }
+}
+
+.btn-primary {
+    background: #3b82f6;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #2563eb;
+}
+
+.btn-success {
+    background: #28a745;
+    color: white;
+}
+
+.btn-danger {
+    background: #dc3545;
+    color: white;
+}
+
+.btn-block {
+    width: 100%;
+    display: block;
+}
+
+/* 卡片样式 - 移动端优化 */
+.card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.card-header {
+    padding: 12px 15px;
+    background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+    color: white;
+    border-bottom: 1px solid #e0e0e0;
+    font-weight: 500;
+}
+
+.card-body {
+    padding: 12px;
+}
+
+@media (min-width: 375px) {
+    .card {
+        margin-bottom: 15px;
+    }
+    
+    .card-header {
+        padding: 15px;
+    }
+    
+    .card-body {
+        padding: 15px;
+    }
+}
+
+/* 功能网格 - 移动端优化 */
+.function-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 12px;
+}
+
+.function-item {
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+@media (min-width: 375px) {
+    .function-grid {
+        gap: 15px;
+        padding: 16px;
+    }
+    
+    .function-item {
+        padding: 20px;
+    }
+}
+
+.function-item:hover {
+    transform: translateY(-2px);
+}
+
+.icon-wrapper {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 10px;
+    background: linear-gradient(135deg, #4e91fb 0%, #ff8cb4 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-wrapper i {
+    font-size: 30px;
+    color: white;
+}
+
+/* 二维码样式 */
+.qr-container {
+    text-align: center;
+    padding: 30px;
+}
+
+.qr-code {
+    width: 200px;
+    height: 200px;
+    margin: 20px auto;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.qr-code.valid {
+    border-color: #4e91fb;
+    background: linear-gradient(135deg, #4e91fb 0%, #ff8cb4 100%);
+    color: white;
+}
+
+.qr-code.invalid {
+    border-color: #999;
+    background: #f5f5f5;
+    color: #999;
+}
+
+/* 状态标签 */
+.status-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.status-pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.status-approved {
+    background: #d4edda;
+    color: #155724;
+}
+
+.status-rejected {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+/* ==========================================================
+   响应式设计和移动端优化
+   ========================================================== */
+
+/* 基础响应式设置 */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 375px) {
+    html {
+        font-size: 15px;
+    }
+}
+
+@media (min-width: 414px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+/* 通用间距和尺寸优化 - 移动端紧凑 */
+.main-content {
+    padding: 10px;
+}
+
+@media (min-width: 375px) {
+    .main-content {
+        padding: 15px;
+    }
+}
+
+/* 卡片样式响应式优化 - 移动端紧凑 */
+.card {
+    margin-bottom: 10px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 375px) {
+    .card {
+        margin-bottom: 15px;
+        border-radius: 16px;
+    }
+}
+
+.card-header {
+    padding: 12px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+@media (min-width: 375px) {
+    .card-header {
+        padding: 15px;
+        font-size: 16px;
+    }
+}
+
+.card-body {
+    padding: 12px;
+}
+
+@media (min-width: 375px) {
+    .card-body {
+        padding: 15px;
+    }
+}
+
+/* 按钮响应式优化 - 移动端紧凑 */
+.btn {
+    padding: 10px 18px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+@media (min-width: 375px) {
+    .btn {
+        padding: 12px 20px;
+        font-size: 16px;
+        border-radius: 10px;
+    }
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+    color: white;
+}
+
+.btn-secondary {
+    background: #6b7280;
+    color: white;
+}
+
+/* 表单元素响应式优化 - 移动端紧凑 */
+.form-group {
+    margin-bottom: 10px;
+}
+
+@media (min-width: 375px) {
+    .form-group {
+        margin-bottom: 15px;
+    }
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+@media (min-width: 375px) {
+    .form-control {
+        padding: 12px 15px;
+        font-size: 16px;
+        border-radius: 10px;
+    }
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* 文字大小响应式 */
+.text-sm {
+    font-size: 12px;
+}
+
+.text-base {
+    font-size: 14px;
+}
+
+.text-lg {
+    font-size: 16px;
+}
+
+@media (min-width: 375px) {
+    .text-sm {
+        font-size: 14px;
+    }
+    
+    .text-base {
+        font-size: 16px;
+    }
+    
+    .text-lg {
+        font-size: 18px;
+    }
+}
+
+/* 图标响应式 */
+.icon-sm {
+    font-size: 16px;
+}
+
+.icon-base {
+    font-size: 20px;
+}
+
+.icon-lg {
+    font-size: 24px;
+}
+
+@media (min-width: 375px) {
+    .icon-sm {
+        font-size: 18px;
+    }
+    
+    .icon-base {
+        font-size: 22px;
+    }
+    
+    .icon-lg {
+        font-size: 26px;
+    }
+}
+
+/* 网格布局响应式 */
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+@media (min-width: 375px) {
+    .grid-2 {
+        gap: 15px;
+    }
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+@media (min-width: 375px) {
+    .grid-3 {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 15px;
+    }
+}
+
+/* Toast 响应式优化 - 移动端顶部中间弹出 */
+.toast {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    color: #333;
+    padding: 16px 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    z-index: 10000;
+    font-size: 14px;
+    max-width: calc(100% - 40px);
+    word-wrap: break-word;
+    border: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    transform: translateX(-50%) translateY(-20px);
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.toast.success {
+    background: #dcfce7;
+    color: #166534;
+    border-color: #bbf7d0;
+}
+
+.toast.error {
+    background: #fee2e2;
+    color: #991b1b;
+    border-color: #fecaca;
+}
+
+.toast.warning {
+    background: #fef3c7;
+    color: #92400e;
+    border-color: #fde68a;
+}
+
+.toast.info {
+    background: #dbeafe;
+    color: #1e40af;
+    border-color: #93c5fd;
+}
+
+@media (min-width: 375px) {
+    .toast {
+        padding: 18px 24px;
+        font-size: 15px;
+        max-width: 380px;
+        border-radius: 14px;
+    }
+}
+
+/* 加载状态响应式 */
+.loading-spinner {
+    width: 30px;
+    height: 30px;
+    margin: 20px auto;
+}
+
+@media (min-width: 375px) {
+    .loading-spinner {
+        width: 40px;
+        height: 40px;
+        margin: 30px auto;
+    }
+}
+
+/* 防止水平滚动 */
+* {
+    max-width: 100%;
+}
+
+img, video, canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+/* 安全区域适配 (iPhone X 等) */
+@supports (padding: env(safe-area-inset-top)) {
+    .header {
+        padding-top: calc(15px + env(safe-area-inset-top));
+    }
+    
+    .bottom-nav {
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+    
+    .container {
+        padding-bottom: calc(80px + env(safe-area-inset-bottom));
+    }
+}
+
+/* 触摸优化 */
+.nav-item, .btn, .card, [onclick] {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+}
+
+/* 滚动优化 */
+.container {
+    -webkit-overflow-scrolling: touch;
+    overflow-x: hidden;
+}
+
+/* 防止缩放 */
+input, textarea, select {
+    font-size: 16px !important;
+    transform-origin: left top;
+}
+
+@media (max-width: 374px) {
+    input, textarea, select {
+        font-size: 14px !important;
+    }
+}
+
+/* 移动端页面长度优化 - 特别紧凑模式 */
+@media (max-width: 425px) {
+    /* 进一步减少小屏幕上的间距 */
+    .header {
+        padding: 10px 15px;
+    }
+    
+    .header h1 {
+        font-size: 16px;
+        margin-bottom: 1px;
+    }
+    
+    .container {
+        padding-bottom: 60px;
+    }
+    
+    .bottom-nav {
+        height: 50px;
+    }
+    
+    .nav-item {
+        padding: 4px 2px;
+        margin: 3px 2px;
+    }
+    
+    .nav-item i {
+        font-size: 18px;
+        margin-bottom: 2px;
+    }
+    
+    .nav-item span {
+        font-size: 9px;
+    }
+    
+    .main-content {
+        padding: 8px;
+    }
+    
+    .function-grid {
+        gap: 8px;
+        padding: 8px;
+    }
+    
+    .function-item {
+        padding: 12px;
+    }
+    
+    .card {
+        margin-bottom: 8px;
+    }
+    
+    .card-header {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+    
+    .card-body {
+        padding: 10px;
+    }
+    
+    .form-section {
+        padding: 10px;
+    }
+    
+    .form-group {
+        margin-bottom: 8px;
+    }
+    
+    .form-input {
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    .btn {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+    
+    /* 二维码容器优化 */
+    .qr-container {
+        padding: 20px;
+    }
+    
+    .qr-code {
+        width: 180px;
+        height: 180px;
+        margin: 15px auto;
+    }
+}
+
+/* 超小屏幕优化 (iPhone SE等) */
+@media (max-width: 375px) {
+    .header {
+        padding: 8px 12px;
+    }
+    
+    .header h1 {
+        font-size: 15px;
+    }
+    
+    .main-content {
+        padding: 6px;
+    }
+    
+    .function-grid {
+        gap: 6px;
+        padding: 6px;
+    }
+    
+    .function-item {
+        padding: 10px;
+        border-radius: 8px;
+    }
+    
+    .icon-wrapper {
+        width: 50px;
+        height: 50px;
+        margin: 0 auto 8px;
+    }
+    
+    .icon-wrapper i {
+        font-size: 24px;
+    }
+}
